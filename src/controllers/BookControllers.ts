@@ -20,7 +20,31 @@ class BookController {
 
     const book = await Book.create(request.body);
 
-    return response.json(book);
+    return response.status(201).json(book);
+  }
+
+  async update(request: Request, response: Response) {
+    const { id } = request.body;
+
+    const book = await Book.findOneAndUpdate(id, request.body);
+
+    if (!book) {
+      return response.status(404).json({ message: 'This book does not exist' });
+    }
+
+    return response.status(200).json(book);
+  }
+
+  async delete(request: Request, response: Response) {
+    const { id } = request.params;
+
+    const book = await Book.findByIdAndRemove(id);
+
+    if (!book) {
+      return response.status(404).json({ message: 'This book does not exist' });
+    }
+
+    return response.status(204).send();
   }
 }
 

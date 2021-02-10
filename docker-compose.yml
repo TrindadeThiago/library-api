@@ -1,25 +1,25 @@
 version: "3.8"
 services:
-    app:
-        build: .
-        container_name: library
-        command: yarn dev:server
-        restart: always
-        ports:
-            - "3333:3333"
-        volumes:
-            - .:/usr/src/app
-        networks:
-            - library-network
+    # app:
+    #     build: .
+    #     container_name: library
+    #     command: yarn dev:server
+    #     restart: always
+    #     ports:
+    #         - "3333:3333"
+    #     volumes:
+    #         - .:/usr/src/app
+    #     networks:
+    #         - library-network
 
     database:
         image: mongo
         container_name: db_library
         ports:
             - "27017:27017"
-        networks:
-            - library-network
+        # networks:
+        #     - library-network
 
-networks:
-    library-network:
-        driver: bridge
+# networks:
+#     library-network:
+#         driver: bridge

@@ -6,5 +6,7 @@ const routes = Router();
 
 routes.get('/books', BookController.index);
 routes.post('/books', BookController.store);
+routes.put('/books/:id', BookController.update);
+routes.delete('/books/:id', BookController.delete);
 
 export default routes;
